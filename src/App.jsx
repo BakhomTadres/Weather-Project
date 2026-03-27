@@ -216,7 +216,7 @@ function App() {
               </h4>
             </div>
             <div>
-              <CloudIcon style={{ fontSize: "150px" }} />
+              <CloudIcon className="cloud" style={{fontSize: "150px"}} />
             </div>
           </div>
           <Button
