@@ -23,6 +23,9 @@ body {
   .btn {
     top: 65% !important;
   }
+  .card .top .country {
+    font-size: 36px !important;
+  }
 }
 .countries {
   padding: 20px;
