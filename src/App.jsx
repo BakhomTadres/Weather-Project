@@ -31,7 +31,7 @@ function App() {
   useEffect(() => {
     axios
       .get(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${latLon.lat}&lon=${latLon.lon}&appid=8cf8bc6a09239964624a1360de7ae4c0`,
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latLon.lat}&lon=${latLon.lon}&appid=8cf8bc6a09239964624a1360de7ae4c0&units=metric`,
         {
           cancelToken: new axios.CancelToken((c) => {
             cancelAxios = c;
@@ -39,12 +39,13 @@ function App() {
         },
       )
       .then((res) => {
+        console.log(res.data.main.temp)
         setTemp({
           ...temp,
-          temp: Math.round(res.data.main.temp - 272.15),
+          temp: Math.round(res.data.main.temp),
           description: res.data.weather[0].description,
-          min: Math.round(res.data.main.temp_min - 272.15),
-          max: Math.round(res.data.main.temp_max - 272.15),
+          min: Math.round(res.data.main.temp_min),
+          max: Math.round(res.data.main.temp_max),
           icon: res.data.weather[0].icon,
         });
       })
