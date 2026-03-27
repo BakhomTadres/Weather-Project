@@ -13,7 +13,7 @@ function App() {
   const { t, i18n } = useTranslation();
   const [dateTime, setDateTime] = useState("");
   const [countryName, setCountryName] = useState(
-    localStorage.getItem("countryName") || "Egypt",
+    localStorage.getItem("countryName") || "Cairo",
   );
   const [latLon, setLatLon] = useState(
     JSON.parse(localStorage.getItem("latLon")) || {
@@ -95,13 +95,13 @@ function App() {
     );
   }
   function handleEgyptClick() {
-    setCountryName("Egypt");
+    setCountryName("Cairo");
     setLatLon({
       ...latLon,
       lat: "30.0444",
       lon: "31.2357",
     });
-    localStorage.setItem("countryName", "Egypt");
+    localStorage.setItem("countryName", "Cairo");
     localStorage.setItem(
       "latLon",
       JSON.stringify({
@@ -173,7 +173,7 @@ function App() {
               sx={{ color: "#fff" }}
               onClick={handleEgyptClick}
             >
-              {t("Egypt")}
+              {t("Cairo")}
             </Button>
             <Button
               variant="text"
