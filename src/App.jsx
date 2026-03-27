@@ -53,12 +53,17 @@ function App() {
       cancelAxios();
     };
   }, [latLon]);
-  const [locale, setLocale] = useState(localStorage.getItem("language"));
+  const [locale, setLocale] = useState(
+    localStorage.getItem("language") || "en",
+  );
   useEffect(() => {
-    setDateTime(
-      localStorage.getItem("dateTime") ||
-        moment().format("MMMM Do YYYY, h:mm:ss a"),
-    );
+    moment.locale(locale);
+    const interval = setInterval(() => {
+      setDateTime(moment().format("MMMM Do YYYY, h:mm:ss A"));
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [locale]);
+  useEffect(() => {
     i18n.changeLanguage(locale);
     if (localStorage.getItem("bodyClass") == "arabic") {
       document.body.classList.remove("english");
